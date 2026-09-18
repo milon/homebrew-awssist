@@ -2,8 +2,7 @@ cask "awssist" do
   version "0.2.4"
   sha256 "80beb7e7f20f8d7a99d6efd320d5f445bc2fc75e8db5ea2f8df446a608c65256"
 
-  url "https://github.com/petro-t/awssist/releases/download/v#{version}/AWSsist-#{version}-arm64.dmg",
-      verified: "github.com/petro-t/awssist/"
+  url "https://github.com/petro-t/awssist/releases/download/v#{version}/AWSsist-#{version}-arm64.dmg"
   name "AWSsist"
   desc "Desktop AWS profile and session manager"
   homepage "https://github.com/petro-t/awssist"
@@ -22,7 +21,7 @@ cask "awssist" do
   # would refuse to launch the freshly-copied app with a "damaged" message.
   # Stripping the quarantine xattr that Homebrew applies to the downloaded DMG
   # lets the user open the app normally on first launch.
-  postflight do
+  postflight_steps do
     system_command "/usr/bin/xattr",
                    args: ["-cr", "#{appdir}/AWSsist.app"],
                    sudo: false
